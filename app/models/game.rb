@@ -4,8 +4,8 @@ class Game < ApplicationRecord
   include HTTParty
 
 
-  self.import_games
-    
+  def self.import_games
+
   end
 
 

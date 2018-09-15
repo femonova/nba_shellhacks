@@ -10,28 +10,12 @@ class Player < ApplicationRecord
       response['sports_content']['roster']['players']['player'].each do |p|
         name = p['first_name'] +" "+ p['last_name']
         name = name.strip.gsub(/'/, '')
-        if Player.where(name: name).where(team: teamName).length == 0
-          Player.create(name: name, team: teamName, position: p['position_short'], years: p['years_pro'])
+        if Player.where(name: name).where(team: teamName).length == 0 && p['years_pro'].to_i != 0
+          Player.create(name: name, team: teamName, position: p['position_short'], years: p['years_pro'].to_i)
         end
       end
     end
   end
-  #
-  # def self.add_years_to_existing_players
-  #   teams = ['hawks','celtics','nets','hornets','bulls','cavaliers','mavericks','nuggets','pistons','warriors','rockets','pacers','clippers','lakers','grizzlies','heat','bucks','timberwolves','pelicans','knicks','thunder','magic','sixers','suns','blazers','kings','spurs','raptors','jazz','wizards']
-  #   teams.each do |t|
-  #     response = HTTParty.get("http://data.nba.net/json/cms/noseason/team/#{t}/roster.json")
-  #     teamName = response['sports_content']['roster']['team']['team_city'] + " " + response['sports_content']['roster']['team']['team_nickname']
-  #     response['sports_content']['roster']['players']['player'].each do |p|
-  #       name = p['first_name'] +" "+ p['last_name']
-  #       name = name.strip
-  #       player = Player.where(name: name).where(team: teamName)
-  #       if player.length > 0
-  #         player.first.update_attributes(years: p['years_pro'])
-  #       end
-  #     end
-  #   end
-  # end
 
   def self.import_headshots
     Player.all.each do |p|

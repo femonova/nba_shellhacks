@@ -13,7 +13,7 @@ group :development do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  #gem 'pg'
 end
 gem 'httparty', '~> 0.15.6'
 # Use Puma as the app server

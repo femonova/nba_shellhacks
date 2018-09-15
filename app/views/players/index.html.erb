@@ -1,31 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+<div class="row" style="height:90vh;">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4 text-center align-self-start">
+    <h1 class="heading">NBA Players' Best Game</h1>
+   <div class="search">
+     <form autocomplete="off" action="/action_page.php">
+      <input type="text" class="searchTerm" placeholder="" id="playerInput">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+     </form>
+   </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="row">
+  <!--<h1>Players</h1>
 
-<h1>Players</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Team</th>
-      <th>Position</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @players.each do |player| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= player.name %></td>
-        <td><%= player.team %></td>
-        <td><%= player.position %></td>
-        <td><%= link_to 'Show', player %></td>
-        <td><%= link_to 'Edit', edit_player_path(player) %></td>
-        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= player.name %></td>
+          <td><%= player.team %></td>
+          <td><%= player.position %></td>
+          <td><%= link_to 'Show', player %></td>
+          <td><%= link_to 'Edit', edit_player_path(player) %></td>
+          <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Player', new_player_path %>
+  <br>
+
+  <%= link_to 'New Player', new_player_path %>
+  -->
+</div>
+</div>
+
+<p id="notice"><%= notice %></p>

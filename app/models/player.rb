@@ -8,6 +8,7 @@ class Player < ApplicationRecord
       teamName = response['sports_content']['roster']['team']['team_city'] + " " + response['sports_content']['roster']['team']['team_nickname']
       response['sports_content']['roster']['players']['player'].each do |p|
         name = p['first_name'] +" "+ p['last_name']
+        name = name.titleize
         if Player.where(name: name).where(team: teamName).length == 0
           Player.create(name: name, team: teamName, position: p['position_short'])
         end

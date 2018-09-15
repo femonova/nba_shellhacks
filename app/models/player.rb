@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
   has_many :games
+  include HTTParty
 
   def self.import_players
     teams = ['hawks','celtics','nets','hornets','bulls','cavaliers','mavericks','nuggets','pistons','warriors','rockets','pacers','clippers','lakers','grizzlies','heat','bucks','timberwolves','pelicans','knicks','thunder','magic','sixers','suns','blazers','kings','spurs','raptors','jazz','wizards']
@@ -14,7 +15,29 @@ class Player < ApplicationRecord
         end
       end
     end
-    # response = HTTParty.get('http://data.nba.net/json/cms/noseason/team/pistons/roster.json')
-    # puts response.body, response.code, response.message, response.headers.inspect
+  end
+
+  def self.import_headshots
+    Player.all.each do |p|
+      lastName = p.last_name.split(" ").join("_").downcase
+      firstName = p.first_name.downcase
+      p lastName + "/" + firstName
+      url = "https://nba-players.herokuapp.com/players/#{lastName}/#{firstName}"
+      response = HTTParty.get(url, :verify => false)
+      p response.body
+      if response.body != "Sorry, that player was not found. Please check the spelling."
+        p.update_attributes(headshot: url)
+      else
+        p.update_attributes(headshot: "/avatar.png")
+      end
+    end
+  end
+
+  def first_name
+    return self.name.split(" ")[0]
+  end
+
+  def last_name
+    return self.name.split(" ").drop(1).join(" ")
   end
 end

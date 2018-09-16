@@ -15,8 +15,9 @@ class Game < ApplicationRecord
       next if g.points < 25 || g.metric < 20
       query = "#{g.player.name} #{g.points} Full Highlights #{g.date.strftime('%Y.%m.%d')}"
       puts "Looking for: #{query}"
-      embed = videos.where(q: query, safe_search: "none").first.player.data['embedHtml']
+      embed = videos.where(q: query, safe_search: "none")
       if embed
+        embed = embed.first.player.data['embedHtml']
         embed = embed.split(" ")[3].gsub(/src=\"\/\//,'').gsub(/\"/,'')
         link = Link.new(url: embed, game_id: g.id)
         link.save!

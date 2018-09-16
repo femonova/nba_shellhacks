@@ -7,16 +7,19 @@ class Game < ApplicationRecord
 
 
   def self.import_youtube_links
+    Yt.configure do |config|
+      config.api_key = 'AIzaSyD7FoEXrMZ7iUM4TAO3i067EJFcq0VGBdc'
+    end
+
     videos = Yt::Collections::Videos.new
-    videos.where(order: 'viewCount').first.title #=>  "PSY - GANGNAM STYLE"
-    videos.where(q: 'Fullscreen CreatorPlatform', safe_search: 'none').size #=> 324
-    videos.where(chart: 'mostPopular', video_category_id: 44).first.title #=> "SINISTER - Trailer"
-    byebug
-    # Game.all.each do |g|
-    #   next if g.points < 20 || g.metric < 20
-    #
-    #   byebug
-    # end
+    Game.all.each do |g|
+      next if g.points < 20 || g.metric < 20
+      query = "#{g.player.name} #{g.points} #{g.date.strftime('%B %Y')}"
+      puts "Looking for: #{query}"
+      byebug
+      videos.where(q: query, safe_search: "none").first.player.data['embedHtml'].src
+      byebug
+    end
   end
 
 

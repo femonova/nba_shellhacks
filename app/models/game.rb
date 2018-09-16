@@ -3,7 +3,6 @@ class Game < ApplicationRecord
   has_many :links
   include HTTParty
   include Nokogiri
-  include Byebug
 
   def self.import_games
 

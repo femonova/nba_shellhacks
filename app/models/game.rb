@@ -9,11 +9,42 @@ class Game < ApplicationRecord
     Yt.configure do |config|
       config.api_key = 'AIzaSyD7FoEXrMZ7iUM4TAO3i067EJFcq0VGBdc'
     end
-
+    team_hash = {
+      "NYK": "New York Knicks",
+      "MEM": "Memphis Grizzlies",
+      "DET": "Detroit Pistons",
+      "PHO": "Phoenix Suns",
+      "LAL": "Los Angeles Lakers",
+      "DEN": "Denver Nuggets",
+      "BOS": "Boston Celtics",
+      "MIA": "Miami Heat",
+      "CHO": "Charlotte Hornets",
+      "ATL": "Atlanta Hawks",
+      "POR": "Portland Trailblazers",
+      "UTA": "Utah Jazz",
+      "WAS": "Washington Wizards",
+      "CHI": "Chicago Bulls",
+      "CLE": "Cleveland Cavaliers",
+      "SAC": "Sacramento Kings",
+      "BRK": "Brooklyn Nets",
+      "ORL": "Orlando Magic",
+      "MIL": "Milwaukee Bucks",
+      "TOR": "Toronto Raptors",
+      "GSW": "Golden State Warriors",
+      "OKC": "Oklahoma City Thunder",
+      "PHI": "Philadelphia 76ers",
+      "SAS": "San Antonio Spurs",
+      "MIN": "Minnesota Timberwolves",
+      "DAL": "Dallas Mavericks",
+      "NOP": "New Orleans Pelicans",
+      "IND": "Indiana Pacers",
+      "LAC": "Los Angeles Clippers",
+      "HOU": "Houston Rockets"
+    }
     videos = Yt::Collections::Videos.new
     Game.all.each do |g|
       next if g.points < 25 || g.metric < 20
-      query = "#{g.player.name} #{g.points} Full Highlights #{g.date.strftime('%Y.%m.%d')}"
+      query = "#{g.player.name} #{team_hash[g.opponent]} Full Highlights #{g.date.strftime('%Y.%m.%d')}"
       puts "Looking for: #{query}"
       embed = videos.where(q: query, safe_search: "none")
       if embed.first

@@ -1,9 +1,5 @@
 $(document).ready(function(){
-  $('.searchTerm').click(function () {
-      $(this).parent().parent().parent().animate({
-        marginTop: "30px"
-      }, 1000, function() {});
-  });
+
 
   $('#playerInputautocomplete-list div').click(function(){
     console.log("here!");

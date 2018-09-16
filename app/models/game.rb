@@ -3,8 +3,23 @@ class Game < ApplicationRecord
   has_many :links
   include HTTParty
   include Nokogiri
+  include Byebug
 
-  #
+
+  def self.import_youtube_links
+    videos = Yt::Collections::Videos.new
+    videos.where(order: 'viewCount').first.title #=>  "PSY - GANGNAM STYLE"
+    videos.where(q: 'Fullscreen CreatorPlatform', safe_search: 'none').size #=> 324
+    videos.where(chart: 'mostPopular', video_category_id: 44).first.title #=> "SINISTER - Trailer"
+    byebug
+    # Game.all.each do |g|
+    #   next if g.points < 20 || g.metric < 20
+    #
+    #   byebug
+    # end
+  end
+
+
   def self.import_games
     Player.all.each do |p|
       puts "Working on: #{p.name}"

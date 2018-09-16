@@ -3,6 +3,8 @@ class Player < ApplicationRecord
   has_one :career_average
   include HTTParty
 
+
+
   def self.import_career_averages
     Player.all.each do |p|
       url = "https://www.basketball-reference.com/players/#{p.bballRefUrl}.html"

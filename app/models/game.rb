@@ -29,6 +29,8 @@ class Game < ApplicationRecord
       "BRK": "Brooklyn Nets",
       "ORL": "Orlando Magic",
       "MIL": "Milwaukee Bucks",
+      "NOH": "New Orleans Hornets",
+      "SEA": "Seattle Supersonics",
       "TOR": "Toronto Raptors",
       "GSW": "Golden State Warriors",
       "OKC": "Oklahoma City Thunder",
@@ -43,7 +45,7 @@ class Game < ApplicationRecord
     }
     videos = Yt::Collections::Videos.new
     Game.all.each do |g|
-      next if g.points < 30 || g.metric < 20
+      next if g.links.length > 0 || g.points < 30 || g.metric < 20
       query = "#{g.player.name} #{team_hash[g.opponent.intern]} Full Highlights #{g.date.strftime('%Y.%m.%d')}"
       puts "Looking for: #{query}"
       embed = videos.where(q: query, safe_search: "none")

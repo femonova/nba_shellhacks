@@ -23,6 +23,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+    @games = @player.games.order("metric DESC")
   end
 
   # GET /players/new

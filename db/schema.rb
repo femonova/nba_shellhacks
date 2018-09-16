@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180916025132) do
+ActiveRecord::Schema.define(version: 20180916090844) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "date"
     t.string "opponent"
-    t.integer "score"
-    t.integer "minutes"
+    t.string "score"
+    t.string "minutes"
     t.string "fgma"
     t.integer "points"
     t.integer "rebounds"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20180916025132) do
     t.integer "steals"
     t.integer "blocks"
     t.integer "turnovers"
-    t.integer "metric"
+    t.float "metric"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "player_id"
+    t.string "boxscore"
     t.index ["player_id"], name: "index_games_on_player_id"
   end
 

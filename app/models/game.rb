@@ -7,10 +7,11 @@ class Game < ApplicationRecord
   #
   def self.import_games
     Player.all.each do |p|
-      if p.games.length >= 15
+      puts "Working on: #{p.name}"
+      if p.games.length >= 10
         next
       end
-      puts "Working on: #{p.name}"
+
       totalGames = 0
       # Array that will hold top 15 games by game_score
       finalGames = []

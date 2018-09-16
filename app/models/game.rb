@@ -5,7 +5,7 @@ class Game < ApplicationRecord
   include Nokogiri
   include Byebug
 
-
+  # Didn't finish
   def self.import_youtube_links
     Yt.configure do |config|
       config.api_key = 'AIzaSyD7FoEXrMZ7iUM4TAO3i067EJFcq0VGBdc'
@@ -22,7 +22,7 @@ class Game < ApplicationRecord
     end
   end
 
-
+  # imports games
   def self.import_games
     Player.all.each do |p|
       puts "Working on: #{p.name}"

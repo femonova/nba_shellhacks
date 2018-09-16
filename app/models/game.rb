@@ -5,7 +5,7 @@ class Game < ApplicationRecord
   include Nokogiri
   include Byebug
 
-
+  # Didn't finish
   def self.import_youtube_links
     videos = Yt::Collections::Videos.new
     videos.where(order: 'viewCount').first.title #=>  "PSY - GANGNAM STYLE"
@@ -19,7 +19,7 @@ class Game < ApplicationRecord
     # end
   end
 
-
+  # imports games
   def self.import_games
     Player.all.each do |p|
       puts "Working on: #{p.name}"

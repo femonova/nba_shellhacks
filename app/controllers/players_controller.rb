@@ -24,6 +24,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @games = @player.games.order("metric DESC")
+    @career_average = @player.career_average
   end
 
   # GET /players/new

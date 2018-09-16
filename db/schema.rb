@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180916090844) do
+ActiveRecord::Schema.define(version: 20180916110012) do
+
+  create_table "career_averages", force: :cascade do |t|
+    t.integer "player_id"
+    t.string "points"
+    t.string "rebounds"
+    t.string "assists"
+    t.string "steals"
+    t.string "blocks"
+    t.string "turnovers"
+    t.string "fgp"
+    t.index ["player_id"], name: "index_career_averages_on_player_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.datetime "date"

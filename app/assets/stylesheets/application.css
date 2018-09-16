@@ -50,6 +50,9 @@
  .searchTerm:focus{
    color: #000;
  }
+ th:hover{
+   cursor: pointer;
+ }
 
  .searchButton {
    position: absolute;

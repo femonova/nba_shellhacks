@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player: one
+  points: MyString
+  rebounds: MyString
+  assists: MyString
+  steals: MyString
+  blocks: MyString
+  turnovers: MyString
+  fgp: MyString
+
+two:
+  player: two
+  points: MyString
+  rebounds: MyString
+  assists: MyString
+  steals: MyString
+  blocks: MyString
+  turnovers: MyString
+  fgp: MyString

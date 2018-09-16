@@ -10,9 +10,13 @@ class PlayersController < ApplicationController
 
   def search
     player = Player.where(name: params['playerName']).first
-    id = player.id
     if player
-      redirect_to player_path(id)
+      id = player.id
+      if player
+        redirect_to player_path(id)
+      end
+    else
+      redirect_to "/"
     end
   end
 

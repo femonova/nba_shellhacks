@@ -26,6 +26,7 @@ Using Google's Youtube Data API, we attempted to collect links to highlights for
 
 Future work on BestGameFinder might include:
 
+- Finish script to import and insert youtube highlight urls into our database, so we can have links to highlights on major games.
 - Make our player & game data accessible as a RESTful API
 - Import non-active NBA players and their 10-15 best games.
 - Add update scripts and attach a scheduler so our data remains fresh and up-to-date

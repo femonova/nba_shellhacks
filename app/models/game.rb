@@ -3,7 +3,7 @@ class Game < ApplicationRecord
   has_many :links
   include HTTParty
   include Nokogiri
-  include Byebug
+  #include Byebug
   def self.import_games
     Player.all.each do |p|
       puts "Working on: #{p.name}"
@@ -28,7 +28,7 @@ class Game < ApplicationRecord
         puts url
         response = HTTParty.get(url, :verify => false)
         parsed = Nokogiri::HTML(response.body)
-        byebug
+        #byebug
 
         # array that stores every game in season
         games = []

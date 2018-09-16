@@ -5,27 +5,138 @@
 </style>
 
 <div class="container-fluid">
-<div class="row" style="">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8 text-center align-self-start">
-    <h1 class="heading">Active NBA Players' Best Game</h1>
-   <div class="search">
-     <%= form_tag(players_search_path, method: "post", autocomplete: "off") do %>
-      <input type="text" name="playerName" class="searchTerm" placeholder="<%= @player.name %>" id="playerInput">
-       <%= button_to players_search_path, method: :post, class: "searchButton" do %>
-         <i class="fa fa-search"></i>
+  <div class="row" style="">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 text-center align-self-start">
+      <h1 class="heading">Active NBA Players' Best Game</h1>
+    <div class="search">
+      <%= form_tag(players_search_path, method: "post", autocomplete: "off") do %>
+        <input type="text" name="playerName" class="searchTerm" placeholder="<%= @player.name %>" id="playerInput">
+        <%= button_to players_search_path, method: :post, class: "searchButton" do %>
+          <i class="fa fa-search"></i>
+        <% end %>
       <% end %>
-     <% end %>
-   </div>
+    </div>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  <div class="col-sm-2"></div>
-</div>
-<div class="row" style="padding: 20px 40px;">
-<img src="<%= @player.headshot %>">
-</div>
+  <div class="row" style="padding: 20px 40px;">
+  <img src="<%= @player.headshot %>">
+  </div>
+
+  <!-- Table Row -->
+  <div class="row" style="margin-bottom: 40px;">
+    <div class ="col-sm-6">
+      <div class="row vertical-align">
+        <div class="col-sm-4 text-center">
+          <div class="player-profile-image">
+              <img src="https://s.w.org/images/core/emoji/11/svg/1f642.svg" style="height:125px;width:150px;"class="img-circle" alt="Temporary">
+          </div>
+        </div>
+        <div class="col-sm-8 text-left" style="padding: 0px 30px">
+          <h1>Kawhi Leonard</h1>
+          <h4>SF on Raptors</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="row">
+        <table class="table table-dark" style="margin-top: 20px">
+          <thead>
+            <thread>
+              <tr>
+                <td>PTS</td>
+                <td>REB</td>
+                <td>AST</td>
+                <td>STLS</td>
+                <td>BLKS</td>
+                <td>TOS</td>
+                <td>FG%</td>
+              </tr>
+            </thread>
+          </thead>
+          <tbody id="overall_stat_row">
+            <td>21</td>
+            <td>51</td>
+            <td>32</td>
+            <td>43</td>
+            <td>99</td>
+            <td>21</td>
+            <td>98</td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-dark">
+      <thead>
+        <thread>
+          <tr>
+            <th><a href="">Date</a></th>
+            <th>Opponent</th>
+            <th>Score</th>
+            <th>Mins</th>
+            <th>FGM-A</th>
+            <th>REBS</th>
+            <th>ASTS</th>
+            <th>STLS</th>
+            <th>BLKS</th>
+            <th>TOs</th>
+            <th>GS</th>
+            <th>Links</th> 
+          </tr>
+        </thread>  
+      <thead>
+        <tbody id="full_stat_table">
+          <tr>
+            <td>01/03/89</td>
+            <td>Utah Jazz</td>
+            <td>99</td>
+            <td>42</td>
+            <td>31</td>
+            <td>87</td>
+            <td>6</td>
+            <td>3</td>
+            <td>42</td>
+            <td>65</td>
+            <td>90</td>
+            <td>3</td>
+          </tr>
+          <tr>
+              <td>01/03/89</td>
+              <td>Boston Celtics</td>
+              <td>99</td>
+              <td>42</td>
+              <td>31</td>
+              <td>87</td>
+              <td>6</td>
+              <td>3</td>
+              <td>42</td>
+              <td>65</td>
+              <td>90</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>01/03/89</td>
+              <td>MIami Heat</td>
+              <td>99</td>
+              <td>42</td>
+              <td>31</td>
+              <td>87</td>
+              <td>6</td>
+              <td>3</td>
+              <td>42</td>
+              <td>65</td>
+              <td>90</td>
+              <td>3</td>
+            </tr>
+        </tbody>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<p id="notice"><%= notice %></p>
 
 <script src="/main.js"></script>
 <script>

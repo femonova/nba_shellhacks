@@ -1,25 +1,20 @@
 <div class="container-fluid">
-<div class="row" style="">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8 text-center align-self-start">
-    <h1 class="heading">Active NBA Players' Best Game</h1>
-   <div class="search">
-     <%= form_tag(players_search_path, method: "post", autocomplete: "off") do %>
-      <input type="text" name="playerName" class="searchTerm" placeholder="" id="playerInput">
-       <%= button_to players_search_path, method: :post, class: "searchButton" do %>
-         <i class="fa fa-search"></i>
-      <% end %>
-     <% end %>
-   </div>
+  <!-- Search Bar Row -->
+  <div class="row" style="">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 text-center align-self-start">
+      <h1 class="heading" style="color:white">NBA Players Best Game</h1>
+      <div class="search">
+        <%= form_tag(players_search_path, method: "post", autocomplete: "off") do %>
+        <input type="text" name="playerName" class="searchTerm" placeholder="" id="playerInput">
+          <%= button_to players_search_path, method: :post, class: "searchButton" do %>
+            <i class="fa fa-search"></i>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  <div class="col-sm-2"></div>
-</div>
-<div class="row" style="padding: 20px 40px;">
-
-</div>
-</div>
-
-<p id="notice"><%= notice %></p>
 
 <script src="/main.js"></script>
 <script>

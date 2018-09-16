@@ -2,7 +2,7 @@
 
 BestGameFinder is a simple rails app that lets you find every active NBA player's best career games, with a corresponding link to highlights.* There are over 450 active NBA players and 5500 career-best box scores on our app.
 
-<sub>* links to highlights not implemented by deadline, but close!</sub>
+<sub>* links to highlights implemented but unstable, may link to wrong player, wrong game or something just plain wrong!</sub>
 #### Getting Started
 The web app is live at http://bestgamefinder.herokuapp.com
 

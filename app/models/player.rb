@@ -2,7 +2,6 @@ class Player < ApplicationRecord
   has_many :games
   has_one :career_average
   include HTTParty
-  include Byebug
 
   def self.import_career_averages
     Player.all.each do |p|

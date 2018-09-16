@@ -8,7 +8,7 @@ class Game < ApplicationRecord
   def self.import_games
     Player.all.each do |p|
       puts "Working on: #{p.name}"
-      if p.games.length >= 10
+      if p.games.length >= 1
         next
       end
 
@@ -153,7 +153,9 @@ class Game < ApplicationRecord
       p "Top #{finalGames.length} games in Career by Game Score:"
       finalGames.each do |g|
         p g.metric.to_s + " - " + g.date.to_s
-        g.save!
+        if Game.where(player_id: p.id).where(date: g.date).length == 0
+          g.save!
+        end
       end
       puts "Total Games Parsed: #{totalGames}"
     end

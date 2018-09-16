@@ -134,14 +134,14 @@ class Game < ApplicationRecord
           if p.years >= 5
             games = games[0..14]
           else
-            games = games[0..10]
+            games = games[0..9]
           end
           combo = finalGames + games
           combo = combo.sort_by {|g| g.metric }.reverse
           if p.years >= 5
             combo = combo[0..14]
           else
-            combo = combo[0..10]
+            combo = combo[0..9]
           end
           finalGames = []
           combo.each do |g|

@@ -16,6 +16,8 @@ group :production do
   gem 'pg'
 end
 gem 'httparty', '~> 0.15.6'
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'pry', '~> 0.11.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

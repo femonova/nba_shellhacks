@@ -40,4 +40,11 @@ class Player < ApplicationRecord
   def last_name
     return self.name.split(" ").drop(1).join(" ")
   end
+
+  def bballRefUrl(year, it)
+    letter = self.last_name[0].downcase
+    nameInUrl = self.last_name[0..4].downcase + self.first_name[0..1].downcase + it.to_s.rjust(2, '0')
+    url = "https://www.basketball-reference.com/players/#{letter}/#{nameInUrl}/gamelog/#{year}/"
+    return url
+  end
 end

@@ -123,7 +123,7 @@ class Game < ApplicationRecord
           if p.years >= 5
             games = games[0..14]
           else
-            games = games[0..10]
+            games = games[0..9]
           end
           games.each do |g|
             finalGames.push(g)

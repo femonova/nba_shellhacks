@@ -43,7 +43,7 @@ class Game < ApplicationRecord
     }
     videos = Yt::Collections::Videos.new
     Game.all.each do |g|
-      next if g.points < 25 || g.metric < 20
+      next if g.points < 30 || g.metric < 20
       query = "#{g.player.name} #{team_hash[g.opponent]} Full Highlights #{g.date.strftime('%Y.%m.%d')}"
       puts "Looking for: #{query}"
       embed = videos.where(q: query, safe_search: "none")

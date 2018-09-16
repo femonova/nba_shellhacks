@@ -120,16 +120,28 @@ class Game < ApplicationRecord
 
         if y == '2018'
           games = games.sort_by {|g| g.metric }.reverse
-          games = games[0..14]
+          if p.years >= 5
+            games = games[0..14]
+          else
+            games = games[0..10]
+          end
           games.each do |g|
             finalGames.push(g)
           end
         else
           games = games.sort_by {|g| g.metric }.reverse
-          games = games[0..14]
+          if p.years >= 5
+            games = games[0..14]
+          else
+            games = games[0..10]
+          end
           combo = finalGames + games
           combo = combo.sort_by {|g| g.metric }.reverse
-          combo = combo[0..14]
+          if p.years >= 5
+            combo = combo[0..14]
+          else
+            combo = combo[0..10]
+          end
           finalGames = []
           combo.each do |g|
             finalGames.push(g)
@@ -137,7 +149,7 @@ class Game < ApplicationRecord
         end
 
       end
-      p "Top 15 games in Career by Game Score:"
+      p "Top #{finalGames.length} games in Career by Game Score:"
       finalGames.each do |g|
         p g.metric.to_s + " - " + g.date.to_s
         g.save!

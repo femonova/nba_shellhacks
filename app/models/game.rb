@@ -3,7 +3,6 @@ class Game < ApplicationRecord
   has_many :links
   include HTTParty
   include Nokogiri
-  include Byebug
 
   # Didn't finish
   def self.import_youtube_links
@@ -13,12 +12,15 @@ class Game < ApplicationRecord
 
     videos = Yt::Collections::Videos.new
     Game.all.each do |g|
-      next if g.points < 20 || g.metric < 20
-      query = "#{g.player.name} #{g.points} #{g.date.strftime('%B %Y')}"
+      next if g.points < 25 || g.metric < 20
+      query = "#{g.player.name} #{g.points} Full Highlights #{g.date.strftime('%Y.%m.%d')}"
       puts "Looking for: #{query}"
-      byebug
-      videos.where(q: query, safe_search: "none").first.player.data['embedHtml'].src
-      byebug
+      embed = videos.where(q: query, safe_search: "none").first.player.data['embedHtml']
+      if embed
+        embed = embed.split(" ")[3].gsub(/src=\"\/\//,'').gsub(/\"/,'')
+        link = Link.new(url: embed, game_id: g.id)
+        link.save!
+      end
     end
   end
 

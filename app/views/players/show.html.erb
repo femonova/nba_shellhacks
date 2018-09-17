@@ -74,24 +74,26 @@
     <table class="table table-dark text-center" id="gamesTable" style="margin-bottom: 0px;">
       <thead>
         <tr>
-          <th onclick="sortTable(0)">Date</th>
-          <th onclick="sortTable(1)">Opponent</th>
-          <th onclick="sortTable(2)">Result</th>
-          <th onclick="sortTable(3)">Mins</th>
-          <th onclick="sortTable(4)">FGM-A</th>
-          <th onclick="sortTable(5)">REBS</th>
-          <th onclick="sortTable(6)">ASTS</th>
-          <th onclick="sortTable(7)">STLS</th>
-          <th onclick="sortTable(8)">BLKS</th>
-          <th onclick="sortTable(9)">TOs</th>
-          <th onclick="sortTable(10)">Points</th>
-          <th onclick="sortTable(11)">Game Score</th>
+          <th onclick="sortTable(0)">Rank</th>
+          <th onclick="sortTable(1)">Date</th>
+          <th onclick="sortTable(2)">Opponent</th>
+          <th onclick="sortTable(3)">Result</th>
+          <th onclick="sortTable(4)">Mins</th>
+          <th onclick="sortTable(5)">FGM-A</th>
+          <th onclick="sortTable(6)">REBS</th>
+          <th onclick="sortTable(7)">ASTS</th>
+          <th onclick="sortTable(8)">STLS</th>
+          <th onclick="sortTable(9)">BLKS</th>
+          <th onclick="sortTable(10)">TOs</th>
+          <th onclick="sortTable(11)">Points</th>
+          <th onclick="sortTable(12)">Game Score</th>
           <th>Highlights</th>
         </tr>
       </thead>
       <tbody id="full_stat_table">
-        <% @games.each do |g| %>
+        <% @games.each_with_index do |g, i| %>
         <tr>
+          <td><%= i + 1 %></td>
           <td><a href="<%= g.boxscore %>" target="_blank"><%= g.date.strftime("%b %d, %Y") %></td>
           <td><%= g.opponent %></td>
           <td><%= g.score %></td>

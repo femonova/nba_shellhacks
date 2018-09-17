@@ -110,7 +110,7 @@ function autocomplete(inp, arr) {
 
 
 /* This code was also ethically stolen from W3Schools for sorting tables */
-function sortTable(n) {
+function sortTable(n, isFloat) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("gamesTable");
   switching = true;
@@ -133,13 +133,26 @@ function sortTable(n) {
       y = rows[i + 1].getElementsByTagName("TD")[n];
       /* Check if the two rows should switch place,
       based on the direction, asc or desc: */
-      if (dir == "asc") {
+      if (dir == "asc" && isFloat) {
+        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+      else if (dir == "asc" && !isFloat) {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
         }
-      } else if (dir == "desc") {
+      } else if (dir == "desc" && isFloat ) {
+        if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc" && !isFloat ) {
         if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
           // If so, mark as a switch and break the loop:
           shouldSwitch = true;

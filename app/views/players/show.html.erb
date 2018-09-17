@@ -27,11 +27,11 @@
       <div class="row vertical-align" style="padding-top: 20px;">
         <div class="col-sm-4 text-center">
           <div class="player-profile-image">
-              <img src="<%= @player.headshot %>" style="height:128px;width:175px; border-radius: 100%; border: 1pt solid gray;" class="img-circle" alt="<%= @player.name %>'s Headshot">
+              <img src="<%= @player.headshot %>" style="height:128px;width:175px; border-radius: 100%; border: 1pt solid gray;" class="img-circle" alt="<%= @player.name %>'s Headshot, courtesy of: https://nba-players.herokuapp.com/" title="<%= @player.name %>'s Headshot, courtesy of: https://nba-players.herokuapp.com/">
           </div>
         </div>
         <div class="col-sm-8 text-left" style="padding: 0px 30px">
-          <h1><%= @player.name %></h1>
+          <h1><a href="<%= @link %>" target="_blank"><%= @player.name %></a></h1>
           <h4><%= @player.position %> on <%= @player.team %></h4>
         </div>
       </div>
@@ -71,7 +71,7 @@
     </div>
   </div>
   <div class="row">
-    <table class="table table-dark text-center" id="gamesTable">
+    <table class="table table-dark text-center" id="gamesTable" style="margin-bottom: 0px;">
       <thead>
         <tr>
           <th onclick="sortTable(0)">Date</th>
@@ -92,7 +92,7 @@
       <tbody id="full_stat_table">
         <% @games.each do |g| %>
         <tr>
-          <td><a href="<%= g.boxscore %>" target="_blank" style="color: #02e6ec;"><%= g.date.strftime("%b %d, %Y") %></td>
+          <td><a href="<%= g.boxscore %>" target="_blank"><%= g.date.strftime("%b %d, %Y") %></td>
           <td><%= g.opponent %></td>
           <td><%= g.score %></td>
           <td><%= g.minutes %></td>

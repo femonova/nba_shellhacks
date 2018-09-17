@@ -25,6 +25,7 @@ class PlayersController < ApplicationController
   def show
     @games = @player.games.order("metric DESC")
     @career_average = @player.career_average
+    @link = "https://www.basketball-reference.com/players/#{@player.bballRefUrl}.html"
   end
 
   # GET /players/new

@@ -103,6 +103,7 @@ a{
 }
 a:hover{
   text-decoration: none;
+  color: white;
 }
  .autocomplete-active {
    /*when navigating through the items using the arrow keys:*/
